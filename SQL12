@@ -1,0 +1,56 @@
+CREATE DATABASE JOIN_PRACTICE;
+
+USE JOIN_PRACTICE;
+
+-- Create STUDENT table
+CREATE TABLE STUDENT (
+    ID INT PRIMARY KEY,
+    NAME VARCHAR(50),
+    CITY VARCHAR(50)
+);
+
+-- Insert student records
+INSERT INTO STUDENT VALUES
+(1, 'PALLAVI', 'DELHI'),
+(2, 'RAHUL', 'PUNE'),
+(3, 'PRIYA', 'MUMBAI'),
+(4, 'AMAN', 'DELHI'),
+(5, 'NEHA', 'CHANDIGARH');
+
+-- Create MARKS table
+CREATE TABLE MARKS (
+    ID INT PRIMARY KEY,
+    SUBJECT VARCHAR(50),
+    MARKS INT
+);
+
+-- Insert marks records
+INSERT INTO MARKS VALUES
+(1, 'SQL', 90),
+(2, 'JAVA', 85),
+(3, 'PYTHON', 95),
+(6, 'SQL', 80);
+
+-- Display STUDENT table
+SELECT * FROM STUDENT;
+
+-- Display MARKS table
+SELECT * FROM MARKS;
+
+-- LEFT JOIN
+SELECT 
+    S.ID,
+    S.NAME,
+    S.CITY,
+    M.SUBJECT,
+    M.MARKS
+FROM STUDENT S
+LEFT JOIN MARKS M
+ON S.ID = M.ID;
+
+-- Find students without marks
+SELECT S.*
+FROM STUDENT S
+LEFT JOIN MARKS M
+ON S.ID = M.ID
+WHERE M.ID IS NULL;
